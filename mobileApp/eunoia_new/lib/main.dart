@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'ai.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -111,7 +112,17 @@ class HomePage extends StatelessWidget {
             iconPath: 'assets/svg/raw/${data['icon']}',
             label: data['label']!,
             size: buttonSize,
-            onPressed: () => print('${data['label']} pressed'),
+            onPressed: () {
+              if (data['label'] == 'CBT-AI') {
+                // Navigate to the cbtai class
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => cbtAi()),
+                );
+              } else {
+                print('${data['label']} pressed');
+              }
+            },
           );
         }).toList(),
       ),
